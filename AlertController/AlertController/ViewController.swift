@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         })
     }
     
-    func doSomething(_ userName: String?, password: String?) {
+    @objc func doSomething(_ userName: String?, password: String?) {
         print("username: \(userName ?? "")  password: \(password ?? "")")
     }
     
