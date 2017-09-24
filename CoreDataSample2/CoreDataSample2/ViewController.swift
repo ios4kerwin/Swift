@@ -11,7 +11,7 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var results: NSArray = [] // better code writing
+    @objc var results: NSArray = [] // better code writing
     
     
     @IBOutlet weak var name: UITextField!
@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return "Name Contacts"
     }
     
-    func loadTable(){
+    @objc func loadTable(){
         let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Form")
