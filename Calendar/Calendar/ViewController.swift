@@ -11,8 +11,8 @@ import EventKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-    var eventStore : EKEventStore!
-    var calendar: EKCalendar!
+    @objc var eventStore : EKEventStore!
+    @objc var calendar: EKCalendar!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var textField: UITextField!
@@ -86,7 +86,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func dismissKeyBoard() {
+    @objc func dismissKeyBoard() {
         self.textField.resignFirstResponder()
     }
     
