@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func checkConnectivity() {
+    @objc func checkConnectivity() {
         print(Reachability.isConnectedToNetwork(), terminator: "")
         if Reachability.isConnectedToNetwork() == false {
             let alert = UIAlertController(title: "Alert", message: "Internet is not working", preferredStyle: UIAlertControllerStyle.alert)
