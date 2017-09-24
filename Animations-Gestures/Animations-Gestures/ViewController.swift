@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var penguinView: UIImageView!
     
-    var frames: NSArray?
+    @objc var frames: NSArray?
     var dieCenter: CGPoint?
     
     override func viewDidLoad() {
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-func walkLeft(_ send: UIGestureRecognizer) {
+@objc func walkLeft(_ send: UIGestureRecognizer) {
     print("walk left");
     //CHECK IF OUT OF SCREEN
     if (penguinView.center.x < 0.0) {
@@ -70,7 +70,7 @@ func walkLeft(_ send: UIGestureRecognizer) {
     })
 }
 
-func walkRight(_ send: UIGestureRecognizer) {
+@objc func walkRight(_ send: UIGestureRecognizer) {
     print("walk right");
     if (self.penguinView.center.x > self.view.frame.size.width) {
         self.penguinView.center = CGPoint(x: 0, y: self.penguinView.center.y);
@@ -83,7 +83,7 @@ func walkRight(_ send: UIGestureRecognizer) {
     })
 }
 
-func jump(_ send: UIGestureRecognizer) {
+@objc func jump(_ send: UIGestureRecognizer) {
     penguinView.startAnimating()
     
     UIView.animate(withDuration: 0.25, animations: { () -> Void in
@@ -93,13 +93,13 @@ func jump(_ send: UIGestureRecognizer) {
     })
 }
     
-func jumpBack() {
+@objc func jumpBack() {
     UIView.animate(withDuration: 0.25, animations: { () -> Void in
     self.penguinView.center = CGPoint(x: self.penguinView.center.x, y: self.penguinView.center.y + 50)
     })
 }
 
-func longPress(_ send: UIGestureRecognizer) {
+@objc func longPress(_ send: UIGestureRecognizer) {
     UIView.animate(withDuration: 0.33, animations: { () -> Void in
         self.dieCenter = self.penguinView.center
         self.penguinView.center = CGPoint(x: self.penguinView.center.x, y: self.view.frame.size.height)
@@ -108,7 +108,7 @@ func longPress(_ send: UIGestureRecognizer) {
     })
 }
 
-func longPressBack() {
+@objc func longPressBack() {
     UIView.animate(withDuration: 0.25, animations: { () -> Void in
         self.penguinView.center = self.dieCenter!
     })

@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     @IBOutlet weak var push: UIButton!
     @IBOutlet weak var attachment: UIButton!
     
-    var collision: UICollisionBehavior!
+    @objc var collision: UICollisionBehavior!
     
     @IBAction func gravity(_ sender: UIButton) {
         animator.removeAllBehaviors()
@@ -39,7 +39,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         animator.addBehavior(collision)
     }
     
-    var attachmentBehavior: UIAttachmentBehavior? = nil
+    @objc var attachmentBehavior: UIAttachmentBehavior? = nil
     
     @IBAction func attachment(_ sender: AnyObject) {
         animator.removeAllBehaviors()
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         }
     }
     
-    var animator = UIDynamicAnimator()
+    @objc var animator = UIDynamicAnimator()
     override func viewDidLoad() {
         super.viewDidLoad()
         animator = UIDynamicAnimator(referenceView: self.view)
