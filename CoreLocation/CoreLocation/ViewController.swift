@@ -13,7 +13,7 @@ import MapKit
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var myMap: MKMapView!
-    let locationManager: CLLocationManager = CLLocationManager()
+    @objc let locationManager: CLLocationManager = CLLocationManager()
     var myLatitude: CLLocationDegrees!
     var myLongitude: CLLocationDegrees!
     var finalLatitude: CLLocationDegrees!
@@ -33,7 +33,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         myMap.addGestureRecognizer(tap)
     }
     
-    func action(_ gestureRecognizer:UIGestureRecognizer) {
+    @objc func action(_ gestureRecognizer:UIGestureRecognizer) {
         let touchPoint = gestureRecognizer.location(in: self.myMap)
         let newCoord:CLLocationCoordinate2D = myMap.convert(touchPoint, toCoordinateFrom: self.myMap)
         let getLat: CLLocationDegrees = newCoord.latitude
@@ -78,7 +78,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         })
     }
     
-    func displayLocationInfo(_ placemark: CLPlacemark?) {
+    @objc func displayLocationInfo(_ placemark: CLPlacemark?) {
         if let containsPlacemark = placemark {
             //stop updating location to save battery life
             locationManager.stopUpdatingLocation()
@@ -92,10 +92,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             myLatitude = (containsPlacemark.location!.coordinate.latitude)
             
             // testing show data
-            print("Locality: \(locality)")
-            print("PostalCode: \(postalCode)")
-            print("Area: \(administrativeArea)")
-            print("Country: \(country)")
+            print("The current value of friendlyWelcome is \(locality as String!)")
+            print("Locality: \(locality as String!)")
+            print("PostalCode: \(postalCode as String!)")
+            print("Area: \(administrativeArea as String!)")
+            print("Country: \(country as String!)")
             print(myLatitude)
             print(myLongitude)
             
@@ -113,10 +114,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     //distance between two points
-    func degreesToRadians(_ degrees: Double) -> Double { return degrees * M_PI / 180.0 }
-    func radiansToDegrees(_ radians: Double) -> Double { return radians * 180.0 / M_PI }
+    @objc func degreesToRadians(_ degrees: Double) -> Double { return degrees * .pi / 180.0 }
+    @objc func radiansToDegrees(_ radians: Double) -> Double { return radians * 180.0 / .pi }
     
-    func getBearingBetweenTwoPoints1(_ point1 : CLLocation, point2 : CLLocation) -> Double {
+    @objc func getBearingBetweenTwoPoints1(_ point1 : CLLocation, point2 : CLLocation) -> Double {
         let lat1 = degreesToRadians(point1.coordinate.latitude)
         let lon1 = degreesToRadians(point1.coordinate.longitude)
         let lat2 = degreesToRadians(point2.coordinate.latitude);
