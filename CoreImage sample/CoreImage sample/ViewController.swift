@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     //SLIDER TO FIRST AND SECOND FILTER
     //when you do slider value change
     //then push in filter button  "sepia" or "vignette" to apply it
-    var sliderValue: Float = 0.0
+    @objc var sliderValue: Float = 0.0
     
     @IBOutlet weak var myImage: UIImageView!
     
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func applyfilter(_ numberFilter: Int) {
+    @objc func applyfilter(_ numberFilter: Int) {
         
         let filePath : String = Bundle.main.path(forResource: "image", ofType: "jpg")!
         let fileUrl : URL = URL (fileURLWithPath: filePath as String)
