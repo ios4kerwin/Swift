@@ -19,12 +19,12 @@ class KeyboardViewController: UIInputViewController {
     }
     
     
-    func centerButton(_: AnyObject) {
+    @objc func centerButton(_: AnyObject) {
         let text = "🐶"
         let proxy = self.textDocumentProxy as UIKeyInput
         proxy.insertText(text)
     }
-    func pushButton(_: AnyObject) {
+    @objc func pushButton(_: AnyObject) {
         let laugh = ":-))))))))"
         let proxy = self.textDocumentProxy as UIKeyInput
         proxy.insertText(laugh)
