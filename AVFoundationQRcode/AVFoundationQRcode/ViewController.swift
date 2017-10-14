@@ -7,106 +7,56 @@
 //
 
 import UIKit
-import AVFoundation
 
-class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet var previewView: UIView!
-    var previewLayer: AVCaptureVideoPreviewLayer!
-    var captureSession : AVCaptureSession!
-    var metadataOutput: AVCaptureMetadataOutput!
-    var videoDevice:AVCaptureDevice!
-    var videoInput: AVCaptureDeviceInput!
-    var running = false
     
     var sendURL: String!
+    var codeReader: CodeReader = AVCodeReader()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupCaptureSession()
-        if captureSession == nil {
-            let alert = UIAlertController(title: "Camera required", message: "This device has no camera. Is this an iOS Simulator?", preferredStyle: UIAlertControllerStyle.alert)
-            let action = UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: false, completion: nil)
-        }
-        else {
-            previewLayer.frame = previewView.bounds
-            previewView.layer.addSublayer(previewLayer)
-            NotificationCenter.default.addObserver(self, selector: #selector(ViewController.startRunning), name:NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(ViewController.stopRunning), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    @objc func startRunning(){
-        if captureSession == nil {
-            return
-        }
-        
-        captureSession.startRunning()
-        metadataOutput.metadataObjectTypes =
-            metadataOutput.availableMetadataObjectTypes
-        running = true
-    }
-    @objc func stopRunning(){
-        captureSession.stopRunning()
-        running = false
+        let previewLayer = codeReader.videoPreview
+        previewLayer.frame = previewView.bounds
+        previewView.layer.addSublayer(previewLayer)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.startReading), name:NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.stopReading), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.startRunning()
+        self.startReading()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.stopRunning()
+        self.stopReading()
     }
     
-    func setupCaptureSession(){
-        
-        if(captureSession != nil){
-            return
-        }
-        videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
-        
-        if(videoDevice == nil){
-            print("No camera on this device")
-            return
-        }
-        
-        captureSession = AVCaptureSession()
-        videoInput = (try! AVCaptureDeviceInput(device: videoDevice) as AVCaptureDeviceInput)
-        
-        if(captureSession.canAddInput(videoInput)){
-            captureSession.addInput(videoInput)
-        }
-        
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        metadataOutput = AVCaptureMetadataOutput()
-        let metadataQueue = DispatchQueue(label: "com.example.QRCode.metadata", attributes: [])
-        metadataOutput.setMetadataObjectsDelegate(self, queue: metadataQueue)
-        
-        if(captureSession.canAddOutput(metadataOutput)){
-            captureSession.addOutput(metadataOutput)
-        } 
+    @objc func startReading(){
+        codeReader.startReading(completion: didOutput)
+    }
+    @objc func stopReading(){
+        codeReader.stopReading()
     }
     
-    func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-            let elemento = metadataObjects.first as?
-            AVMetadataMachineReadableCodeObject
-            if let elemento = elemento?.stringValue {
-                print(elemento)
-                sendURL = elemento
-            }
+    private func didOutput(result: CodeReadResult) {
+        switch result {
+        case .success(let elemento):
+            print(elemento)
+            sendURL = elemento
+        case .failure:
+            showNotAvailableCameraError()
+        }
+    }
+    
+    private func showNotAvailableCameraError() {
+        let alert = UIAlertController(title: "Camera required", message: "This device has no camera. Is this an iOS Simulator?", preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: false, completion: nil)
     }
     
 }
-
-
-

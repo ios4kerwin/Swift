@@ -14,6 +14,9 @@
 		075FD4D91A34D5A000513A3A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 075FD4D71A34D5A000513A3A /* LaunchScreen.xib */; };
 		075FD4E51A34D5A000513A3A /* AVFoundationQRcodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FD4E41A34D5A000513A3A /* AVFoundationQRcodeTests.swift */; };
 		075FD4F11A34D5BA00513A3A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075FD4F01A34D5BA00513A3A /* AVFoundation.framework */; };
+		A4BEFB7C1F92410100D68A40 /* CodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEFB7B1F92410100D68A40 /* CodeReader.swift */; };
+		A4BEFB7E1F9243C200D68A40 /* AVCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEFB7D1F9243C200D68A40 /* AVCodeReader.swift */; };
+		A4BEFB801F92599900D68A40 /* MockCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEFB7F1F92599900D68A40 /* MockCodeReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		075FD4E31A34D5A000513A3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		075FD4E41A34D5A000513A3A /* AVFoundationQRcodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVFoundationQRcodeTests.swift; sourceTree = "<group>"; };
 		075FD4F01A34D5BA00513A3A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A4BEFB7B1F92410100D68A40 /* CodeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeReader.swift; sourceTree = "<group>"; };
+		A4BEFB7D1F9243C200D68A40 /* AVCodeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCodeReader.swift; sourceTree = "<group>"; };
+		A4BEFB7F1F92599900D68A40 /* MockCodeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCodeReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,8 @@
 			children = (
 				075FD4CE1A34D5A000513A3A /* AppDelegate.swift */,
 				075FD4D01A34D5A000513A3A /* ViewController.swift */,
+				A4BEFB7B1F92410100D68A40 /* CodeReader.swift */,
+				A4BEFB7D1F9243C200D68A40 /* AVCodeReader.swift */,
 				075FD4D21A34D5A000513A3A /* Main.storyboard */,
 				075FD4D51A34D5A000513A3A /* Images.xcassets */,
 				075FD4D71A34D5A000513A3A /* LaunchScreen.xib */,
@@ -103,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				075FD4E41A34D5A000513A3A /* AVFoundationQRcodeTests.swift */,
+				A4BEFB7F1F92599900D68A40 /* MockCodeReader.swift */,
 				075FD4E21A34D5A000513A3A /* Supporting Files */,
 			);
 			path = AVFoundationQRcodeTests;
@@ -222,6 +231,8 @@
 			files = (
 				075FD4D11A34D5A000513A3A /* ViewController.swift in Sources */,
 				075FD4CF1A34D5A000513A3A /* AppDelegate.swift in Sources */,
+				A4BEFB7E1F9243C200D68A40 /* AVCodeReader.swift in Sources */,
+				A4BEFB7C1F92410100D68A40 /* CodeReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				075FD4E51A34D5A000513A3A /* AVFoundationQRcodeTests.swift in Sources */,
+				A4BEFB801F92599900D68A40 /* MockCodeReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
