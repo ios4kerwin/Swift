@@ -43,7 +43,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func startRunning(){
+    @objc func startRunning(){
         if captureSession == nil {
             return
         }
@@ -53,7 +53,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             metadataOutput.availableMetadataObjectTypes
         running = true
     }
-    func stopRunning(){
+    @objc func stopRunning(){
         captureSession.stopRunning()
         running = false
     }
@@ -72,7 +72,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         if(captureSession != nil){
             return
         }
-        videoDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
         
         if(videoDevice == nil){
             print("No camera on this device")
@@ -87,7 +87,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         metadataOutput = AVCaptureMetadataOutput()
         let metadataQueue = DispatchQueue(label: "com.example.QRCode.metadata", attributes: [])
         metadataOutput.setMetadataObjectsDelegate(self, queue: metadataQueue)
@@ -97,12 +97,12 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         } 
     }
     
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
             let elemento = metadataObjects.first as?
             AVMetadataMachineReadableCodeObject
-            if(elemento != nil){
-                print(elemento!.stringValue)
-                sendURL = elemento!.stringValue
+            if let elemento = elemento?.stringValue {
+                print(elemento)
+                sendURL = elemento
             }
     }
     
