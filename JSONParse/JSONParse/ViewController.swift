@@ -8,6 +8,33 @@
 
 import UIKit
 
+struct AppDetails: Codable {
+    struct Feed: Codable {
+        struct Entry: Codable {
+            struct ImImage: Codable {
+                let label: String
+            }
+            struct Summary: Codable {
+                let label: String
+            }
+            struct Title: Codable {
+                let label: String
+            }
+            let imimage: [ImImage]
+            let summary: Summary
+            let title: Title
+            
+            enum CodingKeys: String, CodingKey {
+                case imimage = "im:image"
+                case summary
+                case title
+            }
+        }
+        let entry: [Entry]
+    }
+    let feed: Feed
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
@@ -72,24 +99,24 @@ class ViewController: UIViewController {
     func connectionDidFinishLoading(_ connection: NSURLConnection!){
         
         do {
-            let dic:NSDictionary! = try JSONSerialization.jsonObject(with: dataJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+            let appDetails = try JSONDecoder().decode(AppDetails.self, from: dataJSON as Data)
             
-            //get from JSON
-            let top1: AnyObject = ((dic["feed"] as! NSDictionary) ["entry"]! as! NSArray) [0]
-            let imgJson: AnyObject = (top1["im:image"] as! NSArray) [2]
-            let url = URL(string: imgJson.object(forKey: "label") as! String)
-            let data = try? Data(contentsOf: url!)
-            let img = UIImage(data: data!)
+            // get title and description
+            tittle.text = appDetails.feed.entry[0].title.label
+            myDescription.text = appDetails.feed.entry[0].summary.label
+            
+            // get image
+            let imgLabel = appDetails.feed.entry[0].imimage[2].label
+            guard let imgUrl = URL(string: imgLabel),
+                let imgData = try? Data(contentsOf: imgUrl),
+                let img = UIImage(data: imgData) else {
+                throw NSError()
+            }
             image.image = img
-            //get tittle and description
-            let tit = (top1["title"] as! NSDictionary) ["label"] as! NSString
-            let desc = (top1["summary"] as! NSDictionary) ["label"] as! NSString
-            tittle.text = tit as String
-            myDescription.text = desc as String
+            
         } catch {
             // failure
             print("Fetch failed: \((error as NSError).localizedDescription)")
         }
     }
-    
 }
