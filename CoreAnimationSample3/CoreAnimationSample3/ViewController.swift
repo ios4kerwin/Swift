@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var position = true
+    @objc var position = true
     
     @IBOutlet weak var image: UIImageView!
     @IBAction func animate(_ sender: UIButton) {

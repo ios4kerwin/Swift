@@ -11,7 +11,7 @@ import CoreData
         
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var results : NSArray?
+    @objc var results : NSArray?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         celda.setValue("Science Fiction", forKey: "subtitle")
         celda.setValue("yodaTux.png", forKey: "image")
         
+        celda.setValue("Yoda Tux 2", forKey: "title")
+        celda.setValue("Science Fiction", forKey: "subtitle")
+        celda.setValue("yodaTux.png", forKey: "image")
+        
         do { 
            try context.save()
         }
@@ -32,9 +36,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
            print("Error!")
         }
 
-        let request = NSFetchRequest (entityName: "Cell")
+        let request = NSFetchRequest<NSFetchRequestResult> (entityName: "Cell")
         request.returnsObjectsAsFaults = false
-        results = try? context.fetch(request)
+        results = try? context.fetch(request) as NSArray
             
         if (results!.count>0){
             for res in results! {

@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		07E35D011A2E358C00CA606C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E35D001A2E358C00CA606C /* AppDelegate.swift */; };
-		07E35D031A2E358C00CA606C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E35D021A2E358C00CA606C /* ViewController.swift */; };
+		07E35D031A2E358C00CA606C /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E35D021A2E358C00CA606C /* BasicViewController.swift */; };
 		07E35D061A2E358C00CA606C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E35D041A2E358C00CA606C /* Main.storyboard */; };
 		07E35D081A2E358C00CA606C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07E35D071A2E358C00CA606C /* Images.xcassets */; };
 		07E35D0B1A2E358C00CA606C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07E35D091A2E358C00CA606C /* LaunchScreen.xib */; };
 		07E35D171A2E358C00CA606C /* XMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E35D161A2E358C00CA606C /* XMLTests.swift */; };
-		07E35D211A2E35E000CA606C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E35D201A2E35E000CA606C /* RootViewController.swift */; };
-		07E35D231A2E380800CA606C /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E35D221A2E380800CA606C /* Song.swift */; };
+		07E35D211A2E35E000CA606C /* AdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E35D201A2E35E000CA606C /* AdvancedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,15 +30,16 @@
 		07E35CFB1A2E358C00CA606C /* XML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E35CFF1A2E358C00CA606C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07E35D001A2E358C00CA606C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		07E35D021A2E358C00CA606C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		07E35D021A2E358C00CA606C /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		07E35D051A2E358C00CA606C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07E35D071A2E358C00CA606C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		07E35D0A1A2E358C00CA606C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		07E35D101A2E358C00CA606C /* XMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E35D151A2E358C00CA606C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07E35D161A2E358C00CA606C /* XMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLTests.swift; sourceTree = "<group>"; };
-		07E35D201A2E35E000CA606C /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		07E35D221A2E380800CA606C /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		07E35D201A2E35E000CA606C /* AdvancedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
+		CE4BB34E1E65EC28006A21E9 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		CE4BB3501E65EC42006A21E9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +66,7 @@
 				07E35CFD1A2E358C00CA606C /* XML */,
 				07E35D131A2E358C00CA606C /* XMLTests */,
 				07E35CFC1A2E358C00CA606C /* Products */,
+				CE4BB34D1E65EC28006A21E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,13 +83,12 @@
 			isa = PBXGroup;
 			children = (
 				07E35D001A2E358C00CA606C /* AppDelegate.swift */,
-				07E35D021A2E358C00CA606C /* ViewController.swift */,
+				07E35D021A2E358C00CA606C /* BasicViewController.swift */,
+				07E35D201A2E35E000CA606C /* AdvancedViewController.swift */,
 				07E35D041A2E358C00CA606C /* Main.storyboard */,
 				07E35D071A2E358C00CA606C /* Images.xcassets */,
 				07E35D091A2E358C00CA606C /* LaunchScreen.xib */,
 				07E35CFE1A2E358C00CA606C /* Supporting Files */,
-				07E35D201A2E35E000CA606C /* RootViewController.swift */,
-				07E35D221A2E380800CA606C /* Song.swift */,
 			);
 			path = XML;
 			sourceTree = "<group>";
@@ -116,6 +116,15 @@
 				07E35D151A2E358C00CA606C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE4BB34D1E65EC28006A21E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE4BB3501E65EC42006A21E9 /* AVFoundation.framework */,
+				CE4BB34E1E65EC28006A21E9 /* AVKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,14 +173,17 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Carlos Butron";
 				TargetAttributes = {
 					07E35CFA1A2E358C00CA606C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 4Q996R58Y9;
+						LastSwiftMigration = 0820;
 					};
 					07E35D0F1A2E358C00CA606C = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 07E35CFA1A2E358C00CA606C;
 					};
 				};
@@ -220,10 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07E35D231A2E380800CA606C /* Song.swift in Sources */,
-				07E35D031A2E358C00CA606C /* ViewController.swift in Sources */,
+				07E35D031A2E358C00CA606C /* BasicViewController.swift in Sources */,
 				07E35D011A2E358C00CA606C /* AppDelegate.swift in Sources */,
-				07E35D211A2E35E000CA606C /* RootViewController.swift in Sources */,
+				07E35D211A2E35E000CA606C /* AdvancedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,16 +289,20 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Terry Torres (98GP2FZ9DQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -321,15 +336,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Terry Torres (98GP2FZ9DQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -339,6 +358,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -347,11 +367,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4Q996R58Y9;
 				INFOPLIST_FILE = XML/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "es.carlosbutron.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -359,11 +381,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4Q996R58Y9;
 				INFOPLIST_FILE = XML/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "es.carlosbutron.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -383,6 +407,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "es.carlosbutron.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XML.app/XML";
 			};
 			name = Debug;
@@ -399,6 +424,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "es.carlosbutron.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XML.app/XML";
 			};
 			name = Release;

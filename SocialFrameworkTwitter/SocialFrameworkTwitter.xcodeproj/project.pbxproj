@@ -17,8 +17,6 @@
 		072E23F61A2EA1B1004EB68C /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E23F51A2EA1B1004EB68C /* TimelineCell.swift */; };
 		072E23F81A2EA1BF004EB68C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E23F71A2EA1BF004EB68C /* Foundation.framework */; };
 		072E23FA1A2EA1C8004EB68C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E23F91A2EA1C8004EB68C /* UIKit.framework */; };
-		072E23FC1A2EA1E0004EB68C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E23FB1A2EA1E0004EB68C /* CoreGraphics.framework */; };
-		072E23FE1A2EA1EB004EB68C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E23FD1A2EA1EB004EB68C /* QuartzCore.framework */; };
 		072E24001A2EA1F5004EB68C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E23FF1A2EA1F5004EB68C /* Accounts.framework */; };
 		072E24021A2EA1FC004EB68C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072E24011A2EA1FC004EB68C /* Social.framework */; };
 		072E24041A2EA7E9004EB68C /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = 072E24031A2EA7E9004EB68C /* image1.png */; };
@@ -49,8 +47,6 @@
 		072E23F51A2EA1B1004EB68C /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		072E23F71A2EA1BF004EB68C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		072E23F91A2EA1C8004EB68C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		072E23FB1A2EA1E0004EB68C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		072E23FD1A2EA1EB004EB68C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		072E23FF1A2EA1F5004EB68C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		072E24011A2EA1FC004EB68C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		072E24031A2EA7E9004EB68C /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image1.png; sourceTree = "<group>"; };
@@ -63,8 +59,6 @@
 			files = (
 				072E24021A2EA1FC004EB68C /* Social.framework in Frameworks */,
 				072E24001A2EA1F5004EB68C /* Accounts.framework in Frameworks */,
-				072E23FE1A2EA1EB004EB68C /* QuartzCore.framework in Frameworks */,
-				072E23FC1A2EA1E0004EB68C /* CoreGraphics.framework in Frameworks */,
 				072E23FA1A2EA1C8004EB68C /* UIKit.framework in Frameworks */,
 				072E23F81A2EA1BF004EB68C /* Foundation.framework in Frameworks */,
 			);
@@ -85,8 +79,6 @@
 			children = (
 				072E24011A2EA1FC004EB68C /* Social.framework */,
 				072E23FF1A2EA1F5004EB68C /* Accounts.framework */,
-				072E23FD1A2EA1EB004EB68C /* QuartzCore.framework */,
-				072E23FB1A2EA1E0004EB68C /* CoreGraphics.framework */,
 				072E23F91A2EA1C8004EB68C /* UIKit.framework */,
 				072E23F71A2EA1BF004EB68C /* Foundation.framework */,
 				072E23CE1A2EA163004EB68C /* SocialFrameworkTwitter */,
@@ -191,14 +183,18 @@
 			attributes = {
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Carlos Butron";
 				TargetAttributes = {
 					072E23CB1A2EA163004EB68C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 4Q996R58Y9;
+						LastSwiftMigration = 0820;
 					};
 					072E23E01A2EA163004EB68C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 4Q996R58Y9;
+						LastSwiftMigration = 0820;
 						TestTargetID = 072E23CB1A2EA163004EB68C;
 					};
 				};
@@ -306,16 +302,20 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 4Q996R58Y9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -349,15 +349,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 4Q996R58Y9;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -367,6 +371,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -380,6 +385,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "es.carlosbutron.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -392,6 +398,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "es.carlosbutron.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -411,6 +418,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "es.carlosbutron.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SocialFrameworkTwitter.app/SocialFrameworkTwitter";
 			};
 			name = Debug;
@@ -427,6 +435,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "es.carlosbutron.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SocialFrameworkTwitter.app/SocialFrameworkTwitter";
 			};
 			name = Release;

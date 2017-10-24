@@ -20,9 +20,10 @@ class ViewController: UIViewController {
             //SAMPLE 3
             let subLayer : CALayer = self.image.layer
             let thePath : CGMutablePath = CGMutablePath();
-            
-            CGPathMoveToPoint(thePath, nil, 160.0, 200.0);
-            CGPathAddCurveToPoint(thePath, nil, 83.0, 50.0, 100.0, 100.0, 160.0, 200.0);
+         
+            thePath.move(to: CGPoint(x: 160.0, y: 200.0))
+            thePath.addCurve(to: CGPoint(x: 83.0, y: 50.0), control1: CGPoint(x: 100.0, y: 100.0), control2: CGPoint(x: 160.0, y: 200.0));
+
             let theAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath:"position")
             theAnimation.path = thePath
             theAnimation.duration = 5.0

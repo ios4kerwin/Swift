@@ -66,7 +66,7 @@ I plan to write further additional examples and all developers are welcome to fo
 Getting Started
 ---------------------
 
-Running in Xcode 8.0 and iOS 10.0
+Running in Xcode 8 and iOS 10
 
 
 Usage
@@ -84,16 +84,11 @@ develop - The active development branch. Pull requests should be directed to thi
 License
 ----
 
-[The MIT License (MIT)](https://github.com/carlbutron/Swift/blob/master/LICENSE.md)
+[The MIT License (MIT)](https://github.com/claney/Swift/blob/master/LICENSE.md)
  
 Contributing
 ----
 
-We'd love to see your ideas for improving this repo! The best way to contribute is by submitting a pull request. We'll do our best to respond to your patch as soon as possible. You can also submit a [new GitHub issue](https://github.com/carlbutron/Swift/issues/new) if you find bugs. :octocat:
+We'd love to see your ideas for improving this repo! The best way to contribute is by submitting a pull request. We'll do our best to respond to your patch as soon as possible. You can also submit a [new GitHub issue](https://github.com/claney/Swift/issues/new) if you find bugs. :octocat:
 
 Please make sure to follow our general coding style and add test coverage for new features!
-
-Questions
----------------------
-
-Have a question? Feel free to contact me on <a href="http://www.twitter.com/carlbutron" target="_blank">Twitter</a> or <a href="http://www.carlosbutron.es" target="_blank">in my website</a>.

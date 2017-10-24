@@ -11,7 +11,8 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var results: NSArray?
+    @objc var results: NSArray = [] // better code writing
+    
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var surname: UITextField!
@@ -25,6 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.setValue(surname.text, forKey: "surname")
         
         // Save the context.
+        // I'm using a do try catch here
         do {
             try context.save()
         } catch {
@@ -35,6 +37,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   
         self.loadTable()
         self.table.reloadData()
+        
+        
+        // make sure the textfields are empty after we click the save button
+        name.text = ""
+        surname.text = ""
     }
     
     override func viewDidLoad() {
@@ -44,7 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : UITableViewCell = UITableViewCell(style:UITableViewCellStyle.subtitle, reuseIdentifier: nil)
-        let aux = results![(indexPath as NSIndexPath).row] as! NSManagedObject
+        let aux = results[indexPath.row] as! NSManagedObject
         cell.textLabel!.text = aux.value(forKey: "name") as? String
         cell.detailTextLabel!.text = aux.value(forKey: "surname") as? String
         
@@ -52,19 +59,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results!.count
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?  {
-        return "Contacts"
+        return "Name Contacts"
     }
     
-    func loadTable(){
+    @objc func loadTable(){
         let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
-        let request = NSFetchRequest(entityName: "Form")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Form")
         request.returnsObjectsAsFaults = false
-        results = try? context.fetch(request)
+        
+        //I'm using a do try catch here.
+        
+        do{
+            
+         results = try context.fetch(request) as NSArray
+        }catch{
+            
+            //catch error here
+        }
     }
     
     override func didReceiveMemoryWarning() {

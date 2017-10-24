@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var results: NSArray! = NSArray()
     var appDel: AppDelegate!
     var context: NSManagedObjectContext!
-    var request : NSFetchRequest<AnyObject>!
+    var request: NSFetchRequest<NSManagedObject>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +45,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func loadTable(){
-        let request = NSFetchRequest(entityName: "Movie")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Movie")
         request.returnsObjectsAsFaults = false
-        results = try! context.fetch(request)
+        results = try! context.fetch(request) as NSArray
         
     }
     

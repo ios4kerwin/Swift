@@ -7,9 +7,7 @@
 
 import UIKit
 import Accounts
-import QuartzCore
 import Social
-import CoreGraphics
 import Foundation
 
 class FirstViewController: UIViewController, UITextFieldDelegate {
@@ -20,36 +18,33 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var labelFollowing: UILabel!
     @IBOutlet weak var textViewDescription: UITextView!
     
-    @IBAction func update(sender: UIButton) {
+    @IBAction func update(_ sender: UIButton) {
         if(labelUserName.text != ""){
-            checkUser() //method implemented after
-        }
-            else{
-            print("Introduce a name!")
-        }
+            checkUser()
+        } else { print("Enter a name!") }
     }
     
-    @IBAction func sendTweet(sender: UIButton) {
+    @IBAction func sendTweet(_ sender: UIButton) {
         let twitterController = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
         let imageToTweet = UIImage(named:"image1.png")
-        twitterController.setInitialText("Test from Xcode")
-        twitterController.addImage(imageToTweet)
-        let completionHandler:SLComposeViewControllerCompletionHandler = {(result) in
-        twitterController.dismissViewControllerAnimated(true, completion: nil)
+        twitterController?.setInitialText("Test from Xcode")
+        twitterController?.add(imageToTweet)
+        let completionHandler:SLComposeViewControllerCompletionHandler = {
+            (result) in twitterController?.dismiss(animated: true, completion: nil)
             switch(result) {
-            case SLComposeViewControllerResult.Cancelled:
-            print("Canceled")
-            case SLComposeViewControllerResult.Done:
-            print("User tweeted")
-            } }
-            twitterController.completionHandler = completionHandler
-            self.presentViewController(twitterController, animated: true, completion: nil)
+                case SLComposeViewControllerResult.cancelled:
+                    print("Canceled")
+                case SLComposeViewControllerResult.done:
+                    print("User tweeted")
+            }
+        }
+        twitterController?.completionHandler = completionHandler
+        self.present(twitterController!, animated: true, completion: nil)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         labelUserName.delegate = self
     }
 
@@ -57,7 +52,8 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+        // called when 'return' key pressed. return NO to ignore.
     {
         textField.resignFirstResponder()
         return true;
@@ -65,47 +61,45 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     func checkUser(){
         let accountStore = ACAccountStore()
-        let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
-        accountStore.requestAccessToAccountsWithType(accountType, options: nil, completion: {(granted, error) in
-                if(granted == true) {
-                var accounts = accountStore.accountsWithAccountType(accountType)
-                if(accounts.count>0){
-                let twitterAccount = accounts[0] as! ACAccount
-                let twitterInfoRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/users/show.json"), parameters: NSDictionary(object: self.labelUserName.text!, forKey: "screen_name") as [NSObject : AnyObject])
-                twitterInfoRequest.account = twitterAccount
-                twitterInfoRequest.performRequestWithHandler({(responseData,urlResponse,error) in
-                dispatch_async(dispatch_get_main_queue(), {()
-                in
-                //check access
-                if(urlResponse.statusCode == 429){
-                print("Rate limit reached")
-                return
-                }
-                //check error
-                if((error) != nil){
-                print("Error \(error.localizedDescription)")
-                }
-                if(responseData != nil){
-                //if dta received TO DO
+        let accountType = accountStore.accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierTwitter)
+        accountStore.requestAccessToAccounts(with: accountType, options: nil, completion: { (granted, error) in
+                if (granted == true) {
+                    var accounts = accountStore.accounts(with: accountType)
+                    if ((accounts?.count)!>0) {
+                        let twitterAccount = accounts?[0] as! ACAccount
+                        let twitterInfoRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, url: URL(string: "https://api.twitter.com/1.1/users/show.json"), parameters: NSDictionary(object: self.labelUserName.text!, forKey: "screen_name" as NSCopying) as! [AnyHashable: Any])
+                        twitterInfoRequest?.account = twitterAccount
+                        twitterInfoRequest?.perform(handler: {(responseData,urlResponse,error) in DispatchQueue.main.async(execute: {() in
+                            //check access
+                            if (urlResponse?.statusCode == 429) {
+                                print("Rate limit reached")
+                                    return
+                            }
+                            //check error
+                            if (error != nil) {
+                                print("Error \(error?.localizedDescription)")
+                            }
+                            if(responseData != nil){
+                                //if dta received TO DO
                 
-                let TWData = (try! NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableLeaves)) as! NSDictionary
-                //getting data
-                let followers = TWData.objectForKey("followers_count")!.integerValue
-                let following = TWData.objectForKey("friends_count")!.integerValue!
-                let description = TWData.objectForKey("description") as! NSString
-                self.labelFollowers.text = "\(followers)"
-                self.labelFollowing.text = "\(following)"
-                self.textViewDescription.text = description as String
+                                let TWData = (try! JSONSerialization.jsonObject(with: responseData!, options: JSONSerialization.ReadingOptions.mutableLeaves)) as! NSDictionary
+                                //getting data
+                                let followers = (TWData.object(forKey: "followers_count")! as AnyObject).int32Value!
+                                let following = (TWData.object(forKey: "friends_count")! as AnyObject).int32Value!
+                                let description = TWData.object(forKey: "description") as! NSString
+                                self.labelFollowers.text = "\(followers)"
+                                self.labelFollowing.text = "\(following)"
+                                self.textViewDescription.text = description as String
                 
-                var profileImageStringURL = TWData.objectForKey("profile_image_url_https") as! NSString
-                profileImageStringURL = profileImageStringURL.stringByReplacingOccurrencesOfString("_normal", withString: "")
-                let url = NSURL(string: profileImageStringURL as String)
-                let data = NSData(contentsOfURL: url!)
-                self.imageViewPhoto.image = UIImage(data: data!)
-                } })
+                                var profileImageStringURL = TWData.object(forKey: "profile_image_url_https") as! NSString
+                                profileImageStringURL = profileImageStringURL.replacingOccurrences(of: "_normal", with: "") as NSString
+                                let url = URL(string: profileImageStringURL as String)
+                                let data = try? Data(contentsOf: url!)
+                                self.imageViewPhoto.image = UIImage(data: data!)
+                            } })
                 }) }
     } else {
-    print("No access granted")
+            print("No access granted")
     }
     }) }
 
